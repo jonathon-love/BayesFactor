@@ -91,12 +91,17 @@ options:
 
     - name: modelTerms
       title: Model Terms
-      type: Terms
+      type: Array
+      template:
+          type: Group
+          elements:
+            - name: term
+              type: Array
+              template:
+                   type: String
+            - name: assumed
+              type: Bool
       default:
-      description:
-          R: >
-            a list of character vectors describing the terms to go into the
-            model
 
     - name: plotHAxis
       title: Horizontal axis

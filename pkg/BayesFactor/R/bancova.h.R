@@ -81,9 +81,22 @@ bancovaOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
                 min=0.1,
                 max=2,
                 default=0.354)
-            private$..modelTerms <- jmvcore::OptionTerms$new(
+            private$..modelTerms <- jmvcore::OptionArray$new(
                 "modelTerms",
                 modelTerms,
+                template=jmvcore::OptionGroup$new(
+                    "modelTerms",
+                    NULL,
+                    elements=list(
+                        jmvcore::OptionArray$new(
+                            "term",
+                            NULL,
+                            template=jmvcore::OptionString$new(
+                                "term",
+                                NULL)),
+                        jmvcore::OptionBool$new(
+                            "assumed",
+                            NULL))),
                 default=NULL)
             private$..plotHAxis <- jmvcore::OptionVariable$new(
                 "plotHAxis",
@@ -332,8 +345,7 @@ bancovaBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #' @param fixedPrior .
 #' @param randomPrior .
 #' @param covPrior .
-#' @param modelTerms a list of character vectors describing the terms to go 
-#'   into the model 
+#' @param modelTerms .
 #' @param plotHAxis a string naming the variable placed on the horizontal axis 
 #'   of the plot 
 #' @param plotSepLines a string naming the variable represented as separate 

@@ -57,17 +57,28 @@ children:
         format: term
         children:
           - type: TargetLayoutBox
-            transferAction: interactions
             children:
               - type: ListBox
                 name: modelTerms
-                valueFilter: unique
+                showColumnHeaders: true
                 isTarget: true
-                itemDropBehaviour: emptyspace
-                events:
-                  change: './ancova.events::onChange_modelTerms'
-                template:
-                  type: TermLabel
+                fullRowSelect: true
+                columns:
+                  - name: term
+                    label: Term
+                    headerAlign: left
+                    stretchFactor: 1
+                    template:
+                      type: TermLabel
+                  - name: assumed
+                    label: Assumed
+                    headerAlign: center
+                    selectable: false
+                    stretchFactor: 0.4
+                    template:
+                      type: CheckBox
+                      label: ''
+                      horizontalAlignment: center
   - type: CollapseBox
     label: Descriptive Plots
     collapsed: true
